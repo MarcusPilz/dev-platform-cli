@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>dev-platform-cli</artifactId>
+
+	<parent>
+		<groupId>com.dbsystel.platform.dev</groupId>
+		<artifactId>dev-platform-parent</artifactId>
+		<version>1.0.1</version>
+		<relativePath>../dev-platform-parent/pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.21</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-exec -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-exec</artifactId>
+			<version>1.3</version>
+		</dependency>
+	</dependencies>
+	<properties>
+		<devplatform.site.path>${project.artifactId}</devplatform.site.path>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>				
+			</plugin>	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- Distribution Management -->
+	<distributionManagement>
+		<repository>
+			<id>step42</id>
+			<name>Releases</name>
+			<url>http://twix16-201v.linux.rz.db.de:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>step42</id>
+			<name>Snapshots</name>
+			<url>http://twix16-201v.linux.rz.db.de:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<site>
+            <id>swd.noncd.rz.db.de</id>
+            <url>${project.url}</url>
+        </site>
+	</distributionManagement>
+	<url>https://swd.noncd.rz.db.de/svn/dbe-s42-dev/websites/devplatform/docs/${project.version}/${project.artifactId}</url>
+</project>
